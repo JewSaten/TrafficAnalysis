@@ -1,0 +1,49 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+
+        maven { url 'https://maven.aliyun.com/repository/public'}
+        maven {
+            credentials {
+                username REPO_USR
+                password REPO_PWD
+            }
+            url 'https://packages.aliyun.com/maven/repository/2161435-release-IofPrS/'
+        }
+        maven {
+            credentials {
+                username REPO_USR
+                password REPO_PWD
+            }
+            url 'https://packages.aliyun.com/maven/repository/2161435-snapshot-qDUwZU/'
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+
+        maven { url 'https://maven.aliyun.com/repository/public'}
+        maven {
+            credentials {
+                username REPO_USR
+                password REPO_PWD
+            }
+            url 'https://packages.aliyun.com/maven/repository/2161435-release-IofPrS/'
+        }
+        maven {
+            credentials {
+                username REPO_USR
+                password REPO_PWD
+            }
+            url 'https://packages.aliyun.com/maven/repository/2161435-snapshot-qDUwZU/'
+        }
+    }
+}
+rootProject.name = "TrafficAnalysis"
+include ':app'

@@ -1,0 +1,80 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+def config = rootProject.ext.android
+def deps = rootProject.ext.dependencies
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+
+    namespace 'com.example.traffic_analysis'
+    compileSdk config.compileSdk
+
+    defaultConfig {
+        applicationId "com.example.traffic_analysis"
+        minSdk config.minSdk
+        targetSdk config.targetSdk
+        versionCode config.versionCode
+        versionName config.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+}
+
+dependencies {
+
+    implementation deps.coreKtx
+    implementation deps.appcompat
+    implementation deps.material
+    implementation deps.constraintlayout
+    implementation deps.navigationFragmentKtx
+    implementation deps.navigationUiKtx
+
+    testImplementation deps.test
+    androidTestImplementation deps.androidTest
+
+
+    if(IS_SOURCE_DEP.toBoolean()){
+        rootProject.ext.moduleDeps.each{
+            implementation project(it)
+        }
+    }else {
+        implementation rootProject.ext.libraryDeps
+    }
+}
