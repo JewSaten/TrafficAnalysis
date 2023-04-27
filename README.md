@@ -4,7 +4,7 @@
 
 ## 集成使用（远程依赖或aar依赖）
 
-1.
+1.添加依赖
 ```
 
 implementation ’com.jew.tech.android:traffic-analysis:1.0.0-SNAPSHOT‘ 
