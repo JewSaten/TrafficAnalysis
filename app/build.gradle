@@ -58,23 +58,26 @@ android {
 }
 
 dependencies {
-
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
     implementation deps.coreKtx
     implementation deps.appcompat
     implementation deps.material
     implementation deps.constraintlayout
     implementation deps.navigationFragmentKtx
     implementation deps.navigationUiKtx
+    implementation deps.preference
+    implementation deps.gson
+    implementation deps.dec
 
     testImplementation deps.test
     androidTestImplementation deps.androidTest
 
 
-    if(IS_SOURCE_DEP.toBoolean()){
-        rootProject.ext.moduleDeps.each{
-            implementation project(it)
-        }
-    }else {
-        implementation rootProject.ext.libraryDeps
-    }
+//    if(IS_SOURCE_DEP.toBoolean()){
+//        rootProject.ext.moduleDeps.each{
+//            implementation project(it)
+//        }
+//    }else {
+//        implementation rootProject.ext.libraryDeps
+//    }
 }
