@@ -88,11 +88,5 @@ class MainActivity : AppCompatActivity() {
         TAManager.unregisterCaptureCallback()
         super.onPause()
     }
-    private fun resetState() {
-        cachedResults.clear()
-        captureLogs.clear()
-        binding.tvStatus.text = ""
-        binding.btn.text = "开始抓包"
-    }
 
 }
