@@ -1,6 +1,6 @@
 # TrafficAnalysis
 
-![录屏](https://s19.aconvert.com/convert/p3r68-cdx67/t32cq-y14uz.gif)
+![录屏](https://s17.aconvert.com/convert/p3r68-cdx67/umbsy-2lxz3.gif)
 
 ## 集成使用（远程依赖或aar依赖）
 
