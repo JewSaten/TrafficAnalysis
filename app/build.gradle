@@ -25,7 +25,7 @@ android {
     }
 
     signingConfigs {
-        release {
+        debug {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
             storeFile file(keystoreProperties['storeFile'])
@@ -35,11 +35,9 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
-            zipAlignEnabled true
-            shrinkResources true
-            signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -68,6 +66,13 @@ dependencies {
     implementation deps.preference
     implementation deps.gson
     implementation deps.dec
+    implementation deps.http
+    implementation deps.utils
+    implementation deps.hutool
+    implementation deps.permission
+    implementation deps.refreshlayout
+    implementation deps.recyclerAdapter
+    implementation deps.smartTable
 
     testImplementation deps.test
     androidTestImplementation deps.androidTest

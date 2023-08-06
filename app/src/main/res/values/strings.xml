@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">TrafficAnalysis</string>
+    <string name="app_name">抓包分析工具</string>
+    <string name="capture_analysis">回放分析</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

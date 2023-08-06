@@ -1,11 +1,15 @@
 package com.example.traffic_analysis
 
 import android.app.Application
-import com.jew.traffic_analysis.ext.TASDKInstaller
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
 
-class App : Application() {
-    override fun onCreate() {
-        super.onCreate()
-        TASDKInstaller.install(this,true)
+class App : Application(){
+    companion object {
+        init {
+            SmartRefreshLayout.setDefaultRefreshInitializer { _, layout ->
+                layout.setEnableLoadMoreWhenContentNotFull(false)
+                layout.setEnableFooterFollowWhenNoMoreData(true)
+            }
+        }
     }
 }
